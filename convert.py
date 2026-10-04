@@ -23,6 +23,7 @@ UPAZILAS = {
     "লালমোহন": "lalmohon",
     "মনপুরা": "monpura",
     "তজুমদ্দিন": "tazumuddin",
+    "জাতীয়": "national",          # সারা দেশের জরুরি হটলাইন (৯৯৯ ইত্যাদি)
 }
 
 CATEGORIES = {
@@ -35,18 +36,21 @@ CATEGORIES = {
     "জরুরি বিদ্যুৎ": "electricity",
     "রেন্ট-এ-কার": "rentcar",
     "ফায়ার সার্ভিস": "fire",
+    "হটলাইন": "hotline",
 }
 
 # অ্যাপে কোন উপজেলায় কোন কার্ড আছে (এর বাইরের ডেটা অ্যাপে দেখা যাবে না)
 AVAILABLE = {
     "bhola_sadar": ["hospital", "ambulance", "police", "lawyer", "tourism", "union", "electricity", "rentcar", "fire"],
-    "borhanuddin": ["hospital", "ambulance", "police", "fire", "electricity", "rentcar"],
+    "borhanuddin": ["hospital", "ambulance", "police", "fire", "electricity", "rentcar", "tourism"],
     "charfasson":  ["hospital", "ambulance", "police", "lawyer", "tourism", "union", "electricity", "rentcar", "fire"],
-    "dowlatkhan":  ["hospital", "ambulance", "police", "fire", "rentcar"],
-    "lalmohon":    ["hospital", "ambulance", "police", "fire", "electricity", "rentcar"],
+    "dowlatkhan":  ["hospital", "ambulance", "police", "fire", "rentcar", "tourism"],
+    "lalmohon":    ["hospital", "ambulance", "police", "fire", "electricity", "rentcar", "tourism"],
     "monpura":     ["hospital", "ambulance", "police", "lawyer", "tourism", "union", "fire"],
-    "tazumuddin":  ["hospital", "ambulance", "police", "fire", "rentcar"],
+    "tazumuddin":  ["hospital", "ambulance", "police", "fire", "rentcar", "tourism"],
+    "national":    ["hotline"],
 }
+# দ্রষ্টব্য: যেসব উপজেলায় "ভ্রমণের স্থান" কার্ড নেই, সেগুলোর ভ্রমণ তথ্য অ্যাপের মূল স্ক্রিনের "ভ্রমণ" তালিকায় দেখা যায়।
 
 BN_DIGITS = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
 
@@ -119,7 +123,7 @@ def main():
             continue
 
         ph = clean_phone(phone)
-        if ph and not re.fullmatch(r"[0-9+\-]{5,20}", ph):
+        if ph and not re.fullmatch(r"[0-9+\-]{3,20}", ph):
             problems.append(f"সারি {i}: ফোন নম্বর ঠিক নয় → \"{phone}\"")
             continue
 
