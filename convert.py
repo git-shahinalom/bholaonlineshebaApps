@@ -30,7 +30,12 @@ CATEGORIES = {
     "হাসপাতাল": "hospital",
     "এ্যাম্বুলেন্স": "ambulance",
     "পুলিশ": "police",
-    "আইনজীবী": "lawyer",
+    "আইনজীবী": "lawyer",              # পুরনো নাম, চলবে
+    "আইনি সহায়তা": "lawyer",         # নতুন দেখানোর নাম (কী বদলায়নি)
+    "আশ্রয়কেন্দ্র": "shelter",
+    "সরকারি অফিস": "govoffice",
+    "নৌ-যোগাযোগ": "waterway",
+    "ফার্মেসি": "pharmacy",
     "ভ্রমণের স্থান": "tourism",
     "ইউনিয়ন পরিষদ": "union",
     "জরুরি বিদ্যুৎ": "electricity",
@@ -39,18 +44,26 @@ CATEGORIES = {
     "হটলাইন": "hotline",
 }
 
-# অ্যাপে কোন উপজেলায় কোন কার্ড আছে (এর বাইরের ডেটা অ্যাপে দেখা যাবে না)
+# অ্যাপে কোন উপজেলায় কোন কার্ড আছে
+ALL12 = ["hospital", "ambulance", "police", "fire", "shelter", "electricity",
+         "pharmacy", "waterway", "govoffice", "tourism", "lawyer", "rentcar"]
+# "union" অ্যাপের গ্রিডে কার্ড নয়; ডেটা থাকে, দেখায় "তথ্য বাতায়ন" পাতায়।
+UPAZILA_KEYS = ALL12 + ["union"]
 AVAILABLE = {
-    "bhola_sadar": ["hospital", "ambulance", "police", "lawyer", "tourism", "union", "electricity", "rentcar", "fire"],
-    "borhanuddin": ["hospital", "ambulance", "police", "fire", "electricity", "rentcar", "tourism"],
-    "charfasson":  ["hospital", "ambulance", "police", "lawyer", "tourism", "union", "electricity", "rentcar", "fire"],
-    "dowlatkhan":  ["hospital", "ambulance", "police", "fire", "rentcar", "tourism"],
-    "lalmohon":    ["hospital", "ambulance", "police", "fire", "electricity", "rentcar", "tourism"],
-    "monpura":     ["hospital", "ambulance", "police", "lawyer", "tourism", "union", "fire"],
-    "tazumuddin":  ["hospital", "ambulance", "police", "fire", "rentcar", "tourism"],
-    "national":    ["hotline"],
+    "bhola_sadar": UPAZILA_KEYS,
+    "borhanuddin": UPAZILA_KEYS,
+    "charfasson": UPAZILA_KEYS,
+    "dowlatkhan": UPAZILA_KEYS,
+    "lalmohon": UPAZILA_KEYS,
+    "monpura": UPAZILA_KEYS,
+    "tazumuddin": UPAZILA_KEYS,
+    "national": ["hotline"],
 }
-# দ্রষ্টব্য: যেসব উপজেলায় "ভ্রমণের স্থান" কার্ড নেই, সেগুলোর ভ্রমণ তথ্য অ্যাপের মূল স্ক্রিনের "ভ্রমণ" তালিকায় দেখা যায়।
+# অ্যাপের প্রতিটি উপজেলায় এখন ১২টি ক্যাটাগরির কার্ড আছে।
+
+MAX_PHOTOS_PER_PLACE = 6      # অ্যাপ ও GitHub-এর সংরক্ষণ-ভারসাম্য: এক স্থানে সর্বোচ্চ ৬টি ছবি
+DAYS_CSV = "days.csv"
+DAYS_JSON = "days.json"
 
 BN_DIGITS = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
 
@@ -97,13 +110,53 @@ def read_rows():
     return list(csv.reader(io.StringIO(text, newline=""), delimiter=delim))
 
 
+def build_days(problems):
+    """days.csv → days.json এর ভেতরের তালিকা। ফাইল না থাকলে None।"""
+    try:
+        raw = open(DAYS_CSV, "rb").read()
+    except FileNotFoundError:
+        return None
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        problems.append(f"{DAYS_CSV}: UTF-8 এ সেভ করা হয়নি")
+        return None
+    rows = list(csv.reader(io.StringIO(text, newline="")))
+    out = []
+    for i, r in enumerate(rows[1:], start=2):
+        r = [c.strip() for c in r] + [""] * (7 - len(r))
+        date, end, title, message, icon, confirmed, show = r[:7]
+        if not any(r) or show.lower() in ("না", "no", "false", "0"):
+            continue
+        if not title or not message:
+            problems.append(f"{DAYS_CSV} সারি {i}: শিরোনাম ও বার্তা দুটোই লাগবে")
+            continue
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            problems.append(f"{DAYS_CSV} সারি {i}: তারিখ 2026-10-21 ফরম্যাটে হতে হবে → \"{date}\"")
+            continue
+        if end and (not re.fullmatch(r"\d{4}-\d{2}-\d{2}", end) or end < date):
+            problems.append(f"{DAYS_CSV} সারি {i}: শেষ তারিখ ঠিক নয় → \"{end}\"")
+            continue
+        ok = confirmed.lower() in ("হ্যাঁ", "yes", "true", "1")
+        item = {"date": date, "title": title, "message": message, "confirmed": ok}
+        if end:
+            item["end"] = end
+        if icon:
+            item["icon"] = icon
+        out.append(item)
+    out.sort(key=lambda d: d["date"])
+    return out
+
+
 def main():
     rows = read_rows()
-    data, problems, count = {}, [], 0
+    data, problems, count, demo_count = {}, [], 0, 0
 
     for i, r in enumerate(rows[1:], start=2):              # ১ নম্বর সারি হেডার
-        r = [c.strip() for c in r] + [""] * (7 - len(r))
-        up_raw, cat_raw, name, address, phone, note, show = r[:7]
+        r = [c.strip() for c in r] + [""] * (13 - len(r))
+        (up_raw, cat_raw, name, address, phone, note, show, demo_raw, verified,
+         lat_raw, lng_raw, photos_raw, credit) = r[:13]
+        is_demo = demo_raw.strip().lower() in ("হ্যাঁ", "yes", "true", "1")
         if not any(r):
             continue                                       # পুরো ফাঁকা সারি
         if not name:
@@ -127,9 +180,68 @@ def main():
             problems.append(f"সারি {i}: ফোন নম্বর ঠিক নয় → \"{phone}\"")
             continue
 
-        data.setdefault(up, {}).setdefault(cat, []).append(
-            {"name": name, "address": address, "phone": ph, "note": note})
+        if is_demo and ph:
+            problems.append(f"সারি {i}: নমুনা সারিতে ফোন নম্বর রাখা যাবে না (কেউ ভুল নম্বরে কল করতে পারে)")
+            continue
+
+        if verified and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", verified):
+            problems.append(f"সারি {i}: যাচাই তারিখ ২০২৬-১০-০৫ ফরম্যাটে লিখতে হবে → \"{verified}\"")
+            continue
+
+        # স্থানাঙ্ক: দুটোই একসাথে থাকতে হবে, আর ভোলার আশপাশের সীমার ভেতরে
+        lat = lng = None
+        if lat_raw or lng_raw:
+            try:
+                lat, lng = float(lat_raw), float(lng_raw)
+            except ValueError:
+                problems.append(f"সারি {i}: অক্ষাংশ/দ্রাঘিমাংশ সংখ্যা হতে হবে → \"{lat_raw}\", \"{lng_raw}\"")
+                continue
+            if not (21.5 <= lat <= 23.2 and 90.0 <= lng <= 91.5):
+                problems.append(f"সারি {i}: স্থানাঙ্ক ভোলা এলাকার বাইরে ({lat}, {lng}); অক্ষাংশ-দ্রাঘিমাংশ উল্টে যায়নি তো?")
+                continue
+
+        # ছবি: '|' দিয়ে আলাদা; প্রতিটি https লিংক অথবা images/ ফোল্ডারের ফাইলের নাম
+        photos = []
+        for ph_item in [x.strip() for x in photos_raw.split("|") if x.strip()]:
+            if re.fullmatch(r"https://\S+", ph_item) or re.fullmatch(r"[\w\-. ]+\.(?:jpe?g|png|webp)", ph_item, re.I):
+                photos.append(ph_item)
+            else:
+                problems.append(f"সারি {i}: ছবির নাম/লিংক ঠিক নয় → \"{ph_item}\" (https লিংক বা image.jpg ধরনের নাম দাও)")
+        if len(photos) != len([x for x in photos_raw.split("|") if x.strip()]):
+            continue
+        if len(photos) > MAX_PHOTOS_PER_PLACE:
+            problems.append(f"সারি {i}: \"{name}\" এ {len(photos)}টি ছবি; সর্বোচ্চ {MAX_PHOTOS_PER_PLACE}টি রাখা যায় (সংরক্ষণ বাঁচাতে)")
+            continue
+
+        item = {"name": name, "address": address, "phone": ph, "note": note}
+        if verified:
+            item["verified"] = verified
+        if lat is not None:
+            item["lat"], item["lng"] = round(lat, 6), round(lng, 6)
+        if photos:
+            item["photos"] = photos
+            if credit:
+                item["credit"] = credit
+        if is_demo:
+            item["demo"] = True
+            demo_count += 1
+        data.setdefault(up, {}).setdefault(cat, []).append(item)
         count += 1
+
+    # কোনো উপজেলা-ক্যাটাগরিতে আসল তথ্য থাকলে সেখানকার নমুনা সারি নিজে থেকে সরে যায়
+    dropped = 0
+    for up_k, cats in data.items():
+        for cat_k, items in cats.items():
+            if any(not it.get("demo") for it in items) and any(it.get("demo") for it in items):
+                kept = [it for it in items if not it.get("demo")]
+                dropped += len(items) - len(kept)
+                cats[cat_k] = kept
+    count -= dropped
+    demo_count -= dropped
+
+    days = build_days(problems)
+    shelters = [it for up_c in data.values() for it in up_c.get("shelter", []) if not it.get("demo")]
+    no_geo = [it["name"] for it in shelters if "lat" not in it]
 
     if problems:
         print(f"❌ {len(problems)}টি সমস্যা পাওয়া গেছে। data.json বদলানো হয়নি:\n")
@@ -141,7 +253,17 @@ def main():
     with open(JSON_FILE, "w", encoding="utf-8", newline="\n") as f:
         f.write(out)
 
-    print(f"✅ {count}টি তথ্য data.json এ লেখা হয়েছে।")
+    if days is not None:
+        with open(DAYS_JSON, "w", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps({"version": 1, "days": days}, ensure_ascii=False, indent=2) + "\n")
+        print(f"✅ {len(days)}টি বিশেষ দিন {DAYS_JSON} এ লেখা হয়েছে।")
+    if no_geo:
+        print(f"⚠ {len(no_geo)}টি আশ্রয়কেন্দ্রে স্থানাঙ্ক নেই; \"১ কিমির মধ্যে\" সুবিধায় এগুলো আসবে না।")
+    print(f"✅ {count}টি তথ্য data.json এ লেখা হয়েছে (আসল {count - demo_count}টি, নমুনা {demo_count}টি)।")
+    if dropped:
+        print(f"ℹ {dropped}টি নমুনা সারি বাদ গেছে, কারণ ওই উপজেলা-ক্যাটাগরিতে আসল তথ্য আছে।")
+    if demo_count:
+        print(f"⚠ {demo_count}টি নমুনা সারি আছে। আসল তথ্য জোগাড় হলে এগুলো মুছে দাও।")
     for up, cats in data.items():
         print(f"   {up}: " + ", ".join(f"{c}({len(v)})" for c, v in cats.items()))
 

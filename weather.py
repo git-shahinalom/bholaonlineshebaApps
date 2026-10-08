@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Open-Meteo থেকে ভোলার আবহাওয়া এনে weather.json বানায়।
+Open-Meteo থেকে ভোলার ৭ উপজেলার আবহাওয়া এনে weather.json বানায় (উপরের স্তরে ভোলা সদর, "regions" এ সব অঞ্চল)।
 ব্যবহার:  python3 weather.py [আউটপুট-ফাইল]
 
 আবহাওয়ার তথ্য: Open-Meteo.com (অ-বাণিজ্যিক ব্যবহার, CC BY 4.0) - অ্যাপে এই উৎসের লিংক দেখানো হয়।
@@ -12,12 +12,23 @@ import time
 import urllib.parse
 import urllib.request
 
-LAT, LON = 22.685, 90.648          # ভোলা সদর (আনুমানিক)
 LOCATION = "ভোলা"
 
+# (অ্যাপের উপজেলা-কী, নাম, অক্ষাংশ, দ্রাঘিমাংশ)। কী অবশ্যই convert.py র AVAILABLE এর সাথে মিলতে হবে।
+# স্থানাঙ্ক উপজেলা সদরের আনুমানিক; আবহাওয়া-মডেলের গ্রিড প্রায় ১০ কিমি, তাই এতটুকু অমিলে কিছু যায় আসে না।
+REGIONS = [
+    ("bhola_sadar", "ভোলা সদর", 22.685, 90.648),
+    ("borhanuddin", "বোরহানউদ্দিন", 22.490, 90.720),
+    ("dowlatkhan", "দৌলতখান", 22.570, 90.730),
+    ("lalmohon", "লালমোহন", 22.330, 90.740),
+    ("charfasson", "চরফ্যাশন", 22.180, 90.750),
+    ("tazumuddin", "তজুমদ্দিন", 22.300, 90.870),
+    ("monpura", "মনপুরা", 22.2983, 90.980),
+]
+
 PARAMS = {
-    "latitude": LAT,
-    "longitude": LON,
+    "latitude": ",".join(str(r[2]) for r in REGIONS),
+    "longitude": ",".join(str(r[3]) for r in REGIONS),
     "current": "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,"
                "weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m",
     "daily": "weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,"
@@ -49,7 +60,8 @@ def num(v, nd=0, default=0):
         return default
 
 
-def build(raw):
+def build_one(raw):
+    """একটি অঞ্চলের current, daily ও auto।"""
     cur = raw["current"]
     d = raw["daily"]
     days = []
@@ -77,9 +89,6 @@ def build(raw):
         auto.append({"hazard": "গরম", "text": f"তাপমাত্রা {tmax}° পর্যন্ত উঠতে পারে"})
 
     return {
-        "updated_ms": int(time.time() * 1000),
-        "source": "Open-Meteo.com",
-        "location": LOCATION,
         "current": {
             "temp": num(cur["temperature_2m"], 1),
             "feels": num(cur["apparent_temperature"], 1),
@@ -95,6 +104,29 @@ def build(raw):
     }
 
 
+def build(raw):
+    """raw: Open-Meteo এর উত্তর। একাধিক স্থান চাইলে সেটা একটি তালিকা (একটিতে শুধু ডিকশনারি)।"""
+    if isinstance(raw, dict):
+        raw = [raw]
+    if len(raw) != len(REGIONS):
+        raise ValueError(f"{len(REGIONS)}টি অঞ্চল চাওয়া হয়েছিল, এসেছে {len(raw)}টি")
+    regions = {}
+    for (key, name, lat, lon), r in zip(REGIONS, raw):
+        one = build_one(r)
+        one.update({"name": name, "lat": lat, "lon": lon})
+        regions[key] = one
+    main = regions[REGIONS[0][0]]                    # ভোলা সদর; আগের অ্যাপ-সংস্করণ এটাই পড়ে
+    return {
+        "updated_ms": int(time.time() * 1000),
+        "source": "Open-Meteo.com",
+        "location": LOCATION,
+        "current": main["current"],
+        "daily": main["daily"],
+        "auto": main["auto"],
+        "regions": regions,
+    }
+
+
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else "weather.json"
     try:
@@ -105,7 +137,7 @@ def main():
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    print(f"✅ {out} লেখা হয়েছে: {data['current']['temp']}°, অটো-সতর্কতা {len(data['auto'])}টি")
+    print(f"✅ {out} লেখা হয়েছে: ভোলা {data['current']['temp']}°, {len(data['regions'])}টি অঞ্চল, ভোলার অটো-সতর্কতা {len(data['auto'])}টি")
 
 
 if __name__ == "__main__":
