@@ -16,8 +16,9 @@ var CATEGORY_MAP = {
   'হাসপাতাল / ক্লিনিক / ডায়াগনস্টিক সেন্টার': 'হাসপাতাল',
   'এ্যাম্বুলেন্স সেবা': 'এ্যাম্বুলেন্স',
   'রেন্ট-এ-কার / যানবাহন': 'রেন্ট-এ-কার',
-  'আইনি সহায়তা / আইনজীবী': 'আইনজীবী',
-  'বিদ্যুৎ অফিস / অভিযোগ কেন্দ্র': 'জরুরি বিদ্যুৎ'
+  'বিদ্যুৎ অফিস / অভিযোগ কেন্দ্র': 'জরুরি বিদ্যুৎ',
+  'ফার্মেসি': 'ফার্মেসি',
+  'নৌ-যোগাযোগ (লঞ্চ / ফেরি / স্পিডবোট / ঘাট)': 'নৌ-যোগাযোগ'
 };
 
 var REQ_NEW = 'নতুন তথ্য যুক্ত করতে চাই';
@@ -54,13 +55,19 @@ var Q = {
   r_area: 'যানবাহন: কোন এলাকায় সেবা দেন?',
   r_license: 'যানবাহন: ট্রেড লাইসেন্স বা নিবন্ধন নম্বর (প্রকাশ হবে না)',
 
-  l_kind: 'আইনি সেবা: আবেদনকারীর ধরন',
-  l_fields: 'আইনি সেবা: কোন ক্ষেত্রে সেবা দেন?',
-  l_license: 'আইনি সেবা: বার কাউন্সিল বা সনদ নম্বর (প্রকাশ হবে না)',
 
   e_kind: 'বিদ্যুৎ: অফিসের ধরন',
   e_services: 'বিদ্যুৎ: কী কী সেবা?',
-  e_24h: 'বিদ্যুৎ: ২৪ ঘণ্টা অভিযোগ গ্রহণ?'
+  e_24h: 'বিদ্যুৎ: ২৪ ঘণ্টা অভিযোগ গ্রহণ?',
+
+  p_24h: 'ফার্মেসি: ২৪ ঘণ্টা খোলা?',
+  p_delivery: 'ফার্মেসি: বাসায় ওষুধ পৌঁছে দেন?',
+  p_license: 'ফার্মেসি: ওষুধ প্রশাসনের ড্রাগ লাইসেন্স নম্বর (প্রকাশ হবে না)',
+
+  w_kind: 'নৌ-যোগাযোগ: সেবার ধরন',
+  w_route: 'নৌ-যোগাযোগ: রুট (কোথা থেকে কোথায়)',
+  w_time: 'নৌ-যোগাযোগ: ছাড়ার সময়সূচি',
+  w_license: 'নৌ-যোগাযোগ: নৌযানের নিবন্ধন/লাইসেন্স নম্বর (প্রকাশ হবে না)'
 };
 
 // রিভিউ কলাম (ফর্মের উত্তরের ডানদিকে যোগ হয়)
@@ -105,7 +112,7 @@ function createForm() {
 
   var form = FormApp.create('ভোলা অনলাইন সেবা - প্রতিষ্ঠানের তথ্য জমা দিন');
   form.setDescription(
-    'ভোলা অনলাইন সেবা অ্যাপে আপনার হাসপাতাল, এ্যাম্বুলেন্স, যানবাহন, আইনি সহায়তা বা বিদ্যুৎ অফিসের তথ্য যুক্ত করতে এই ফর্ম পূরণ করুন।\n\n' +
+    'ভোলা অনলাইন সেবা অ্যাপে আপনার হাসপাতাল, এ্যাম্বুলেন্স, যানবাহন, বিদ্যুৎ অফিস, ফার্মেসি বা নৌ-যোগাযোগের তথ্য যুক্ত করতে এই ফর্ম পূরণ করুন।\n\n' +
     '• জমা দেওয়ার পর ডেভেলপার আপনার দেওয়া নম্বরে ফোন করে তথ্য যাচাই করবেন।\n' +
     '• যাচাই শেষ হলে তথ্য অ্যাপে প্রকাশিত হবে। জমা দিলেই প্রকাশের নিশ্চয়তা নেই।\n' +
     '• ভুল, বিভ্রান্তিকর বা অন্যের তথ্য দিলে আবেদন বাতিল হবে।\n' +
@@ -148,14 +155,6 @@ function createForm() {
   form.addTextItem().setTitle(Q.r_area);
   form.addTextItem().setTitle(Q.r_license).setHelpText('প্রকাশ হবে না, শুধু যাচাইয়ে লাগবে।');
 
-  // ---- আইনি সহায়তা
-  var pL = form.addPageBreakItem().setTitle('আইনি সহায়তা / আইনজীবীর তথ্য');
-  form.addMultipleChoiceItem().setTitle(Q.l_kind).setChoiceValues([
-    'আইনজীবী (ব্যক্তি)', 'আইনজীবী সমিতি / বার অ্যাসোসিয়েশন', 'আইনি সহায়তা কেন্দ্র / এনজিও', 'সরকারি লিগ্যাল এইড অফিস']).setRequired(true);
-  form.addCheckboxItem().setTitle(Q.l_fields).setChoiceValues([
-    'দেওয়ানি', 'ফৌজদারি', 'পারিবারিক', 'ভূমি', 'নারী ও শিশু অধিকার', 'শ্রম', 'সাইবার']);
-  form.addTextItem().setTitle(Q.l_license).setHelpText('আইনজীবীর ক্ষেত্রে প্রযোজ্য। প্রকাশ হবে না, শুধু যাচাইয়ে লাগবে।');
-
   // ---- বিদ্যুৎ
   var pE = form.addPageBreakItem().setTitle('বিদ্যুৎ অফিস / অভিযোগ কেন্দ্রের তথ্য');
   form.addMultipleChoiceItem().setTitle(Q.e_kind).setChoiceValues([
@@ -163,6 +162,20 @@ function createForm() {
   form.addCheckboxItem().setTitle(Q.e_services).setChoiceValues([
     'বিদ্যুৎ নেই / লাইন কাটা অভিযোগ', 'নতুন সংযোগ', 'বিল সংক্রান্ত', 'মিটার সমস্যা']);
   form.addMultipleChoiceItem().setTitle(Q.e_24h).setChoiceValues(['হ্যাঁ', 'না']);
+
+  // ---- ফার্মেসি
+  var pP = form.addPageBreakItem().setTitle('ফার্মেসির তথ্য');
+  form.addMultipleChoiceItem().setTitle(Q.p_24h).setChoiceValues(['হ্যাঁ', 'না']).setRequired(true);
+  form.addMultipleChoiceItem().setTitle(Q.p_delivery).setChoiceValues(['হ্যাঁ', 'না']);
+  form.addTextItem().setTitle(Q.p_license).setHelpText('প্রকাশ হবে না, শুধু যাচাইয়ে লাগবে।');
+
+  // ---- নৌ-যোগাযোগ
+  var pW = form.addPageBreakItem().setTitle('নৌ-যোগাযোগের তথ্য');
+  form.addMultipleChoiceItem().setTitle(Q.w_kind).setChoiceValues([
+    'লঞ্চ', 'ফেরি', 'স্পিডবোট', 'ট্রলার / নৌকা', 'ঘাট / টার্মিনাল অফিস']).setRequired(true);
+  form.addTextItem().setTitle(Q.w_route).setHelpText('যেমন: ভোলা – লক্ষ্মীপুর').setRequired(true);
+  form.addParagraphTextItem().setTitle(Q.w_time).setHelpText('সময়সূচি বদলালে আবার ফর্ম দিয়ে জানাবেন।');
+  form.addTextItem().setTitle(Q.w_license).setHelpText('প্রকাশ হবে না, শুধু যাচাইয়ে লাগবে।');
 
   // ---- সাধারণ শেষ পাতা
   var pC = form.addPageBreakItem().setTitle('যোগাযোগ ও সম্মতি')
@@ -181,13 +194,14 @@ function createForm() {
   ]).setRequired(true);
 
   // ---- শাখা: সেবার ধরন অনুযায়ী পাতায় যাওয়া, তারপর সবাই শেষ পাতায়
-  [pH, pA, pR, pL, pE].forEach(function (p) { p.setGoToPage(pC); });
+  [pH, pA, pR, pE, pP, pW].forEach(function (p) { p.setGoToPage(pC); });
   catItem.setChoices([
     catItem.createChoice('হাসপাতাল / ক্লিনিক / ডায়াগনস্টিক সেন্টার', pH),
     catItem.createChoice('এ্যাম্বুলেন্স সেবা', pA),
     catItem.createChoice('রেন্ট-এ-কার / যানবাহন', pR),
-    catItem.createChoice('আইনি সহায়তা / আইনজীবী', pL),
-    catItem.createChoice('বিদ্যুৎ অফিস / অভিযোগ কেন্দ্র', pE)
+    catItem.createChoice('বিদ্যুৎ অফিস / অভিযোগ কেন্দ্র', pE),
+    catItem.createChoice('ফার্মেসি', pP),
+    catItem.createChoice('নৌ-যোগাযোগ (লঞ্চ / ফেরি / স্পিডবোট / ঘাট)', pW)
   ]);
 
   // ---- উত্তর এই শীটেই আসবে
@@ -294,13 +308,17 @@ function buildNote_(cat, a) {
     var rt = listOf_(a[Q.r_types]); if (rt.length) add(rt.join(', '));
     if (a[Q.r_driver]) add(a[Q.r_driver]);
     if (a[Q.r_area]) add('এলাকা: ' + a[Q.r_area]);
-  } else if (cat === 'আইনজীবী') {
-    add(a[Q.l_kind]);
-    var lf = listOf_(a[Q.l_fields]); if (lf.length) add('ক্ষেত্র: ' + lf.join(', '));
   } else if (cat === 'জরুরি বিদ্যুৎ') {
     add(a[Q.e_kind]);
     var es = listOf_(a[Q.e_services]); if (es.length) add(es.join(', '));
     if (a[Q.e_24h] === 'হ্যাঁ') add('২৪ ঘণ্টা অভিযোগ গ্রহণ');
+  } else if (cat === 'ফার্মেসি') {
+    if (a[Q.p_24h] === 'হ্যাঁ') add('২৪ ঘণ্টা খোলা');
+    if (a[Q.p_delivery] === 'হ্যাঁ') add('বাসায় ওষুধ পৌঁছে দেয়');
+  } else if (cat === 'নৌ-যোগাযোগ') {
+    add(a[Q.w_kind]);
+    if (a[Q.w_route]) add('রুট: ' + clean_(a[Q.w_route], 80));
+    if (a[Q.w_time]) add('সময়সূচি: ' + clean_(a[Q.w_time], 120));
   }
   if (a[Q.hours]) add('সময়: ' + a[Q.hours]);
   if (a[Q.link]) add(a[Q.link]);

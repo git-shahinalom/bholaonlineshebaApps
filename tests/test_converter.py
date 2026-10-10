@@ -29,19 +29,22 @@ def run(data_rows="", days_rows=None):
 
 
 class Categories(unittest.TestCase):
-    def test_new_categories_and_lawyer_alias(self):
+    def test_removed_legal_category_is_rejected(self):
+        for name in ("আইনি সহায়তা", "আইনজীবী"):
+            r, _, _ = run(f"ভোলা সদর,{name},ক,খ,,,হ্যাঁ,,,,,,\n")
+            self.assertNotEqual(r.returncode, 0, name)
+
+    def test_new_categories(self):
         rows = ("ভোলা সদর,আশ্রয়কেন্দ্র,ক,খ,,,হ্যাঁ,,,22.69,90.65,,\n"
                 "ভোলা সদর,ফার্মেসি,ফা,খ,,,হ্যাঁ,,,,,,\n"
                 "ভোলা সদর,নৌ-যোগাযোগ,নৌ,খ,,,হ্যাঁ,,,,,,\n"
-                "ভোলা সদর,সরকারি অফিস,অ,খ,,,হ্যাঁ,,,,,,\n"
-                "ভোলা সদর,আইনি সহায়তা,আ,খ,,,হ্যাঁ,,,,,,\n"
-                "ভোলা সদর,আইনজীবী,পুরনো,খ,,,হ্যাঁ,,,,,,\n")
+                "ভোলা সদর,সরকারি অফিস,অ,খ,,,হ্যাঁ,,,,,,\n")
         r, data, _ = run(rows)
         self.assertEqual(r.returncode, 0, r.stdout)
         up = data["data"]["bhola_sadar"]
         for k in ("shelter", "pharmacy", "waterway", "govoffice"):
             self.assertIn(k, up)
-        self.assertEqual(len(up["lawyer"]), 2)          # দুই নামই একই কী
+        self.assertNotIn("lawyer", up)
 
     def test_union_still_accepted_for_info_page(self):
         r, data, _ = run("চরফ্যাশন,ইউনিয়ন পরিষদ,আহম্মদপুর ইউনিয়ন পরিষদ,খ,,,হ্যাঁ,,,,,,\n")
@@ -153,6 +156,29 @@ class ImportShelters(unittest.TestCase):
         self.assertEqual(r.returncode, 0)
         self.assertTrue(same)
         self.assertIn("স্থানাঙ্ক নেই", r.stdout)
+
+
+
+class EnglishColumns(unittest.TestCase):
+    def test_english_columns_flow_to_json(self):
+        r, data, _ = run("ভোলা সদর,হাসপাতাল,ক,খ,,ন,হ্যাঁ,,,,,,,Hosp,Addr,Note\n")
+        self.assertEqual(r.returncode, 0, r.stdout)
+        it = data["data"]["bhola_sadar"]["hospital"][0]
+        self.assertEqual((it["name_en"], it["address_en"], it["note_en"]), ("Hosp", "Addr", "Note"))
+
+    def test_no_english_means_no_keys(self):
+        r, data, _ = run("ভোলা সদর,হাসপাতাল,ক,খ,,ন,হ্যাঁ,,,,,,\n")
+        self.assertNotIn("name_en", data["data"]["bhola_sadar"]["hospital"][0])
+
+    def test_days_english(self):
+        r, _, days = run("", "2027-04-14,,পহেলা বৈশাখ,বার্তা,🌸,হ্যাঁ,হ্যাঁ,New Year,Happy new year\n")
+        self.assertEqual(days["days"][0]["title_en"], "New Year")
+
+    def test_every_real_row_has_english(self):
+        d = json.load(open(os.path.join(ROOT, "data.json"), encoding="utf-8"))["data"]
+        missing = [it["name"] for up in d.values() for items in up.values() for it in items
+                   if not it.get("name_en")]
+        self.assertEqual(missing, [])
 
 
 if __name__ == "__main__":
