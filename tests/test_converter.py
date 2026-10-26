@@ -181,5 +181,147 @@ class EnglishColumns(unittest.TestCase):
         self.assertEqual(missing, [])
 
 
+
+class SyncPhotos(unittest.TestCase):
+    """tools/sync_photos.py ও photos.csv মেলানো (ইন্টারনেট ছাড়া, নকল ছবি দিয়ে)।"""
+
+    def _env(self):
+        from PIL import Image
+        d = tempfile.mkdtemp()
+        os.makedirs(os.path.join(d, "tools"))
+        os.makedirs(os.path.join(d, "images"))
+        os.makedirs(os.path.join(d, "fake"))
+        for f in ("tools/sync_photos.py", "tools/add_photo.py", "convert.py"):
+            shutil.copy(os.path.join(ROOT, f), os.path.join(d, f))
+        open(os.path.join(d, "data.csv"), "w", encoding="utf-8-sig").write(
+            HEADER + "চরফ্যাশন,ভ্রমণের স্থান,জ্যাকব টাওয়ার,খ,,ন,হ্যাঁ,,,,,,\n")
+        Image.effect_noise((1600, 900), 60).convert("RGB").save(os.path.join(d, "fake", "GOODID1234567890.jpg"))
+        Image.new("RGB", (300, 200)).save(os.path.join(d, "fake", "TINYID1234567890.jpg"))
+        return d
+
+    def _run(self, d, rows):
+        open(os.path.join(d, "sheet.csv"), "w", encoding="utf-8-sig").write("স্থান,ফাইল আইডি,ছবির সূত্র,অনুমোদনের তারিখ\n" + rows)
+        env = dict(os.environ, SYNC_PHOTOS_LOCAL_DIR=os.path.join(d, "fake"))
+        r = subprocess.run([sys.executable, "tools/sync_photos.py", "--csv-file", "sheet.csv"], cwd=d, env=env, capture_output=True, text=True)
+        c = subprocess.run([sys.executable, "convert.py"], cwd=d, capture_output=True, text=True)
+        return r, c
+
+    def test_approve_then_remove_flow(self):
+        d = self._env()
+        r, c = self._run(d, "জ্যাকব টাওয়ার,GOODID1234567890,রহিম,2026-10-19\n")
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertEqual(c.returncode, 0, c.stdout)
+        item = json.load(open(os.path.join(d, "data.json"), encoding="utf-8"))["data"]["charfasson"]["tourism"][0]
+        self.assertEqual(item["photos"], ["u-GOODID1234567890.jpg"])
+        self.assertEqual(item["credit"], "রহিম")
+        self.assertLess(os.path.getsize(os.path.join(d, "images", "u-GOODID1234567890.jpg")), 300 * 1024)
+        # "সরানো হোক" = তালিকা থেকে বাদ → ছবিও মোছা, অ্যাপের ডেটা থেকেও
+        r, c = self._run(d, "")
+        self.assertEqual(c.returncode, 0, c.stdout)
+        self.assertFalse(os.path.exists(os.path.join(d, "images", "u-GOODID1234567890.jpg")))
+        item = json.load(open(os.path.join(d, "data.json"), encoding="utf-8"))["data"]["charfasson"]["tourism"][0]
+        self.assertNotIn("photos", item)
+
+    def test_tiny_photo_rejected_and_bad_place_blocks_build(self):
+        d = self._env()
+        r, c = self._run(d, "জ্যাকব টাওয়ার,TINYID1234567890,ক,2026-10-19\n")
+        self.assertIn("বাদ", r.stdout)
+        self.assertFalse(os.path.exists(os.path.join(d, "images", "u-TINYID1234567890.jpg")))
+        r, c = self._run(d, "অজানা স্থান,GOODID1234567890,ক,2026-10-19\n")
+        self.assertNotEqual(c.returncode, 0)                     # নাম না মিললে ডেটা-বিল্ড আটকায়
+
+    def test_wrong_tab_does_not_wipe_photos(self):
+        d = self._env()
+        self._run(d, "জ্যাকব টাওয়ার,GOODID1234567890,রহিম,2026-10-19\n")
+        open(os.path.join(d, "sheet.csv"), "w", encoding="utf-8-sig").write("Timestamp,Email\n1,a@b.c\n")
+        env = dict(os.environ, SYNC_PHOTOS_LOCAL_DIR=os.path.join(d, "fake"))
+        r = subprocess.run([sys.executable, "tools/sync_photos.py", "--csv-file", "sheet.csv"], cwd=d, env=env, capture_output=True, text=True)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertTrue(os.path.exists(os.path.join(d, "images", "u-GOODID1234567890.jpg")))   # অক্ষত
+
+
+
+class Spots(unittest.TestCase):
+    """tools/sync_spots.py ও spots.csv মেলানো।"""
+
+    SHEET_HDR = "ধরন,নাম,নাম (ইংরেজি),উপজেলা,এলাকা,অক্ষাংশ,দ্রাঘিমাংশ,বিবরণ,বিবরণ (ইংরেজি),সুবিধা,সময়/ফি,ফোন,প্রস্তাবক,অনুমোদনের তারিখ\n"
+
+    def _env(self):
+        d = tempfile.mkdtemp()
+        os.makedirs(os.path.join(d, "tools"))
+        os.makedirs(os.path.join(d, "images"))
+        for f in ("tools/sync_spots.py", "convert.py"):
+            shutil.copy(os.path.join(ROOT, f), os.path.join(d, f))
+        open(os.path.join(d, "data.csv"), "w", encoding="utf-8-sig").write(
+            HEADER.rstrip("\n") + ",নাম (ইংরেজি),ঠিকানা (ইংরেজি),নোট (ইংরেজি),ধরন\n"
+            "চরফ্যাশন,ভ্রমণের স্থান,জ্যাকব টাওয়ার,খ,,ন,হ্যাঁ,,,,,,,,,,দর্শনীয়\n")
+        return d
+
+    def _run(self, d, rows):
+        open(os.path.join(d, "sheet.csv"), "w", encoding="utf-8-sig").write(self.SHEET_HDR + rows)
+        r = subprocess.run([sys.executable, "tools/sync_spots.py", "--csv-file", "sheet.csv"], cwd=d, capture_output=True, text=True)
+        c = subprocess.run([sys.executable, "convert.py"], cwd=d, capture_output=True, text=True)
+        data = json.load(open(os.path.join(d, "data.json"), encoding="utf-8"))["data"] if c.returncode == 0 else None
+        return r, c, data
+
+    def test_approved_spot_reaches_app_data(self):
+        d = self._env()
+        r, c, data = self._run(d, "রেস্টুরেন্ট,স্কাই ভিউ রুফটপ,Sky View Rooftop,ভোলা সদর,লঞ্চঘাট রোড,22.6850,90.6480,"
+                                  "নদীর ধারে রুফটপ রেস্টুরেন্ট,Riverside rooftop restaurant,পার্কিং;পরিবার-বান্ধব,বিকাল ৪টা–রাত ১০টা,01712345678,রহিম,2026-10-21\n")
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertEqual(c.returncode, 0, c.stdout)
+        item = [x for x in data["bhola_sadar"]["tourism"] if x["name"] == "স্কাই ভিউ রুফটপ"][0]
+        self.assertEqual(item["type"], "restaurant")
+        self.assertEqual(item["by"], "রহিম")
+        self.assertEqual(item["name_en"], "Sky View Rooftop")
+        self.assertEqual(item["phone"], "01712345678")
+        self.assertTrue(item["spot"])
+        self.assertAlmostEqual(item["lat"], 22.685)
+        self.assertIn("চরফ্যাশন", [k for k in data if any(i["name"] == "জ্যাকব টাওয়ার" for i in data[k]["tourism"])][0] and "চরফ্যাশন")
+        jt = [x for x in data["charfasson"]["tourism"] if x["name"] == "জ্যাকব টাওয়ার"][0]
+        self.assertEqual(jt["type"], "landmark")                  # data.csv এর ধরন-কলাম
+
+    def test_bad_rows_dropped_and_links_stripped(self):
+        d = self._env()
+        rows = ("পার্ক,ভুল জায়গা,,ভোলা সদর,,40.0,10.0,x,,,,,,2026-10-21\n"                    # ভোলার বাইরে
+                "পার্ক,স্প্যাম পার্ক,,ভোলা সদর,,22.7,90.6,দেখুন https://spam.example/buy এখানে,,,,,,2026-10-21\n"
+                "অজানা-ধরন,ধরন ভুল,,মনপুরা,,22.3,90.98,ভালো জায়গা,,,,,,2026-10-21\n"
+                "পার্ক,,,ভোলা সদর,,22.7,90.6,নাম নেই,,,,,,2026-10-21\n")
+        r, c, data = self._run(d, rows)
+        self.assertEqual(c.returncode, 0, c.stdout)
+        names = [x["name"] for x in data["bhola_sadar"]["tourism"]] + [x["name"] for x in data["monpura"]["tourism"]]
+        self.assertNotIn("ভুল জায়গা", names)
+        spam = [x for x in data["bhola_sadar"]["tourism"] if x["name"] == "স্প্যাম পার্ক"][0]
+        self.assertNotIn("http", spam["note"])
+        odd = [x for x in data["monpura"]["tourism"] if x["name"] == "ধরন ভুল"][0]
+        self.assertEqual(odd["type"], "other")
+
+    def test_duplicate_of_existing_place_skipped(self):
+        d = self._env()
+        r, c, data = self._run(d, "দর্শনীয়,জ্যাকব টাওয়ার,,চরফ্যাশন,,22.18,90.75,নকল,,,,,,2026-10-21\n")
+        self.assertEqual(c.returncode, 0, c.stdout)
+        self.assertEqual(len([x for x in data["charfasson"]["tourism"] if x["name"] == "জ্যাকব টাওয়ার"]), 1)
+
+    def test_wrong_tab_keeps_old_file(self):
+        d = self._env()
+        self._run(d, "পার্ক,ভালো পার্ক,,ভোলা সদর,,22.7,90.6,ঠিক,,,,,,2026-10-21\n")
+        open(os.path.join(d, "sheet.csv"), "w", encoding="utf-8-sig").write("Timestamp,Email\n1,a@b.c\n")
+        r = subprocess.run([sys.executable, "tools/sync_spots.py", "--csv-file", "sheet.csv"], cwd=d, capture_output=True, text=True)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("ভালো পার্ক", open(os.path.join(d, "spots.csv"), encoding="utf-8-sig").read())
+
+    def test_photo_for_spot_by_name(self):
+        from PIL import Image
+        d = self._env()
+        Image.new("RGB", (800, 500)).save(os.path.join(d, "images", "u-abc1234567890xyz.jpg"))
+        open(os.path.join(d, "photos.csv"), "w", encoding="utf-8-sig").write(
+            "স্থান,ফাইল,ছবির সূত্র,অনুমোদনের তারিখ,ড্রাইভ আইডি\nভালো লেক,u-abc1234567890xyz.jpg,করিম,2026-10-21,abc1234567890xyz\n")
+        r, c, data = self._run(d, "জলাশয়,ভালো লেক,,তজুমদ্দিন,,22.3,90.87,সুন্দর লেক,,,,,,2026-10-21\n")
+        self.assertEqual(c.returncode, 0, c.stdout)
+        lake = [x for x in data["tazumuddin"]["tourism"] if x["name"] == "ভালো লেক"][0]
+        self.assertEqual(lake["photos"], ["u-abc1234567890xyz.jpg"])
+        self.assertEqual(lake["credit"], "করিম")
+
+
 if __name__ == "__main__":
     unittest.main()

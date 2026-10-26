@@ -52,6 +52,43 @@ def fetch():
         return json.load(r)
 
 
+def _get(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "BholaOnlineSeba-weather/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+
+def fetch_all():
+    """৭ অঞ্চলের কাঁচা উত্তর (তালিকা)। একসাথে না পারলে আলাদা আলাদা; কোনো অঞ্চল না পারলে সেটা None।"""
+    for attempt in range(3):
+        try:
+            raw = _get(URL)
+            if isinstance(raw, dict):
+                raw = [raw]
+            if len(raw) == len(REGIONS):
+                return raw
+            print(f"⚠ {len(REGIONS)}টির জায়গায় {len(raw)}টি এসেছে; আলাদা আলাদা আনছি")
+            break
+        except Exception as e:                      # নেটওয়ার্ক/সীমা/ফরম্যাট
+            print(f"⚠ একসাথে আনা যায়নি (চেষ্টা {attempt + 1}/3): {e!r}")
+            time.sleep(3 * (attempt + 1))
+    out = []
+    for key, name, lat, lon in REGIONS:
+        one = dict(PARAMS, latitude=lat, longitude=lon)
+        url = "https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(one, safe=",/")
+        result = None
+        for attempt in range(3):
+            try:
+                result = _get(url)
+                break
+            except Exception as e:
+                print(f"⚠ {key}: {e!r} (চেষ্টা {attempt + 1}/3)")
+                time.sleep(3 * (attempt + 1))
+        out.append(result)
+        time.sleep(1)
+    return out
+
+
 def num(v, nd=0, default=0):
     try:
         x = round(float(v), nd)
@@ -112,9 +149,14 @@ def build(raw):
         raise ValueError(f"{len(REGIONS)}টি অঞ্চল চাওয়া হয়েছিল, এসেছে {len(raw)}টি")
     regions = {}
     for (key, name, lat, lon), r in zip(REGIONS, raw):
+        if r is None:                                 # এই অঞ্চলের তথ্য আসেনি; বাকিগুলো চলবে
+            print(f"⚠ {key} এর তথ্য নেই, বাদ দেওয়া হলো")
+            continue
         one = build_one(r)
         one.update({"name": name, "lat": lat, "lon": lon})
         regions[key] = one
+    if REGIONS[0][0] not in regions:
+        raise ValueError("ভোলা সদরের তথ্য আসেনি; ফাইল বানানো হলো না (পুরনো ফাইল অক্ষত থাকবে)")
     main = regions[REGIONS[0][0]]                    # ভোলা সদর; আগের অ্যাপ-সংস্করণ এটাই পড়ে
     return {
         "updated_ms": int(time.time() * 1000),
@@ -130,7 +172,7 @@ def build(raw):
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else "weather.json"
     try:
-        data = build(fetch())
+        data = build(fetch_all())
     except Exception as e:                      # নেটওয়ার্ক/ফরম্যাট সমস্যা: পুরনো ফাইল অক্ষত থাকে
         print(f"❌ আবহাওয়া আনা যায়নি: {e!r}")
         sys.exit(1)

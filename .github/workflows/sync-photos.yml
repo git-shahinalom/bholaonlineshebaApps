@@ -1,0 +1,54 @@
+name: Sync approved photos and spots
+
+# Google Sheet-এ "অনুমোদিত" করা ইউজার-ছবি ও ইউজার-প্রস্তাবিত স্পট রিপোতে এনে অ্যাপে দেখায়।
+# প্রতি ৬ ঘণ্টায় নিজে চলে; তাড়াতাড়ি চাইলে Actions → Sync approved photos and spots → Run workflow।
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-photos
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: ছবির টুল বসাও
+        run: pip install pillow
+
+      - name: অনুমোদিত ছবি আনো
+        env:
+          PHOTO_SHEET_CSV_URL: ${{ secrets.PHOTO_SHEET_CSV_URL }}
+        run: python3 tools/sync_photos.py
+
+      - name: অনুমোদিত স্পট আনো
+        env:
+          SPOT_SHEET_CSV_URL: ${{ secrets.SPOT_SHEET_CSV_URL }}
+        run: python3 tools/sync_spots.py
+
+      - name: data.json নতুন করে বানাও (ভুল থাকলে এখানেই থামে)
+        run: python3 convert.py
+
+      - name: বদল থাকলে সেভ করো
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A images photos.csv spots.csv data.json days.json
+          if git diff --cached --quiet; then
+            echo "কোনো পরিবর্তন নেই।"
+          else
+            git commit -m "Sync approved photos and spots"
+            git pull --rebase -q
+            git push
+          fi

@@ -1,0 +1,93 @@
+name: Publish alert
+
+# সতর্কবার্তা প্রকাশ বা মুছে ফেলার ফর্ম: Actions → Publish alert → Run workflow
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "কী করবে?"
+        type: choice
+        options: [publish, clear]
+        default: publish
+      level:
+        description: "মাত্রা: info = তথ্য, warning = সতর্ক থাকুন, severe = ভয়াবহ (লাল)"
+        type: choice
+        options: [warning, severe, info]
+        default: warning
+      hazard:
+        description: "বিপদের ধরন"
+        type: choice
+        options: [ঘূর্ণিঝড়, বন্যা, জলোচ্ছ্বাস, ভারী বৃষ্টি, তাপদাহ]
+        default: ঘূর্ণিঝড়
+      when:
+        description: "কখন থেকে? (যেমন: আজ রাত ১০টা থেকে / আগামীকাল সকাল থেকে)"
+        type: string
+        default: "আজ রাত থেকে"
+      signal:
+        description: "সংকেত (ঐচ্ছিক, যেমন: ৪ নম্বর বিপদ সংকেত)"
+        type: string
+        required: false
+      when_en:
+        description: "ইংরেজিতে কখন? (ঐচ্ছিক, 'কখন' এর সাথে মিলিয়ে লেখো, যেমন: from tonight / from tomorrow morning)। ফাঁকা রাখলে ইংরেজি ব্যবহারকারীরা বাংলা সময় দেখবে"
+        type: string
+        required: false
+      signal_en:
+        description: "ইংরেজিতে সংকেত (ঐচ্ছিক, যেমন: Danger signal no. 4)"
+        type: string
+        required: false
+      source:
+        description: "সূত্র"
+        type: string
+        default: "আবহাওয়া অধিদপ্তর"
+      hours:
+        description: "কত ঘণ্টা দেখাবে? (১-৭২)"
+        type: string
+        default: "24"
+      confirm:
+        description: "ভয়াবহ মাত্রার জন্য: আমি আবহাওয়া অধিদপ্তরের সংকেত যাচাই করেছি"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-branch
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: live ব্রাঞ্চের বর্তমান ফাইল আনো
+        run: bash scripts/live_pull.sh
+
+      - name: সতর্কবার্তা তৈরি
+        env:
+          ALERT_ACTION: ${{ inputs.action }}
+          LEVEL: ${{ inputs.level }}
+          HAZARD: ${{ inputs.hazard }}
+          WHEN: ${{ inputs.when }}
+          SIGNAL: ${{ inputs.signal }}
+          WHEN_EN: ${{ inputs.when_en }}
+          SIGNAL_EN: ${{ inputs.signal_en }}
+          SOURCE: ${{ inputs.source }}
+          HOURS: ${{ inputs.hours }}
+          CONFIRM: ${{ inputs.confirm }}
+        run: python3 make_alert.py live/alerts.json
+
+      - name: live ব্রাঞ্চে পাঠাও
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/live_push.sh live
+
+      - name: সবার ফোনে পুশ নোটিফিকেশন পাঠাও
+        if: ${{ inputs.action == 'clear' || inputs.level != 'info' }}
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          MODE: ${{ inputs.action }}
+        run: |
+          pip install --quiet google-auth requests
+          python3 send_fcm.py "$MODE" live/alerts.json

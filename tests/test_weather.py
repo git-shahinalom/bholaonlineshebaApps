@@ -50,6 +50,16 @@ class Weather(unittest.TestCase):
         self.assertEqual(out["regions"]["lalmohon"]["auto"], [])
         self.assertEqual(out["auto"], [])               # ভোলা সদর শান্ত
 
+    def test_missing_region_is_skipped_but_sadar_is_required(self):
+        raws = [fake() for _ in weather.REGIONS]
+        raws[5] = None                                  # তজুমদ্দিন আসেনি
+        out = weather.build(raws)
+        self.assertNotIn("tazumuddin", out["regions"])
+        self.assertEqual(len(out["regions"]), len(weather.REGIONS) - 1)
+        raws[0] = None                                  # ভোলা সদর না থাকলে ফাইল বানানো যাবে না
+        with self.assertRaises(ValueError):
+            weather.build(raws)
+
     def test_wrong_number_of_regions_fails(self):
         with self.assertRaises(ValueError):
             weather.build([fake()] * 3)

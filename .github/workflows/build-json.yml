@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - "data.csv"
+      - "days.csv"
+      - "photos.csv"
+      - "spots.csv"
       - "convert.py"
   workflow_dispatch:
 
@@ -16,16 +19,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
-      - name: data.csv থেকে data.json বানাও
+      - name: data.csv ও days.csv থেকে data.json ও days.json বানাও
         run: python3 convert.py
 
-      - name: data.json বদলালে সেভ করো
+      - name: data.json বা days.json বদলালে সেভ করো
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json days.json
           if git diff --cached --quiet; then
             echo "data.json এ কোনো পরিবর্তন নেই।"
           else

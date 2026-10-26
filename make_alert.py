@@ -2,7 +2,7 @@
 """
 সতর্কবার্তা প্রকাশ বা মুছে ফেলা (GitHub Actions থেকে চলে)।
 ব্যবহার:  python3 make_alert.py <alerts.json>
-ইনপুট আসে পরিবেশ-চলক (ENV) থেকে: ALERT_ACTION, LEVEL, HAZARD, WHEN, SIGNAL, SOURCE, HOURS, CONFIRM
+ইনপুট আসে পরিবেশ-চলক (ENV) থেকে: ALERT_ACTION, LEVEL, HAZARD, WHEN, SIGNAL, WHEN_EN, SIGNAL_EN, SOURCE, HOURS, CONFIRM
 """
 import json
 import os
@@ -49,6 +49,7 @@ def main():
     elif action == "publish":
         level, hazard = env("LEVEL", "").strip(), env("HAZARD", "").strip()
         when, signal = env("WHEN", "").strip(), env("SIGNAL", "").strip()
+        when_en, signal_en = env("WHEN_EN", "").strip(), env("SIGNAL_EN", "").strip()   # ঐচ্ছিক: ইংরেজি ব্যবহারকারীদের জন্য
         source = env("SOURCE", "আবহাওয়া অধিদপ্তর").strip() or "আবহাওয়া অধিদপ্তর"
         if level not in LEVELS:
             fail(f"মাত্রা ঠিক নয়: {level!r}")
@@ -60,6 +61,8 @@ def main():
             hours = int(env("HOURS", "24"))
         except ValueError:
             fail("মেয়াদ (ঘণ্টা) সংখ্যা হতে হবে")
+        if len(when_en) > 60 or len(signal_en) > 60:
+            fail("ইংরেজি 'when_en'/'signal_en' ৬০ অক্ষরের বেশি হতে পারবে না")
         if not 1 <= hours <= 72:
             fail("মেয়াদ ১ থেকে ৭২ ঘণ্টার মধ্যে হতে হবে")
         if level == "severe" and env("CONFIRM", "false").lower() != "true":
@@ -73,6 +76,8 @@ def main():
             "when": when,
             "signal": signal,
             "source": source,
+            **({"when_en": when_en} if when_en else {}),
+            **({"signal_en": signal_en} if signal_en else {}),
             "issued_ms": now_ms,
             "expires_ms": now_ms + hours * 3600 * 1000,
         }

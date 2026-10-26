@@ -20,7 +20,8 @@ import urllib.request
 TOPIC = "bhola_alerts"
 DEFAULT_PROJECT = "bholaonlineshebaapps"
 SCOPE = "https://www.googleapis.com/auth/firebase.messaging"
-ALERT_FIELDS = ("id", "level", "hazard", "verb", "when", "signal", "source", "issued_ms", "expires_ms")
+ALERT_FIELDS = ("id", "level", "hazard", "verb", "when", "signal", "source", "issued_ms", "expires_ms",
+                "when_en", "signal_en")
 
 
 def build_message(kind, alert=None):

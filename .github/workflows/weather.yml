@@ -1,0 +1,31 @@
+name: Update weather
+
+# প্রতি ৩০ মিনিটে আবহাওয়া আনে এবং 'live' ব্রাঞ্চে রাখে (main এ কোনো কমিট হয় না)
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-branch
+  cancel-in-progress: false
+
+jobs:
+  weather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: live ব্রাঞ্চের বর্তমান ফাইল আনো
+        run: bash scripts/live_pull.sh
+
+      - name: আবহাওয়া আনো
+        run: python3 weather.py live/weather.json
+
+      - name: live ব্রাঞ্চে পাঠাও
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/live_push.sh live

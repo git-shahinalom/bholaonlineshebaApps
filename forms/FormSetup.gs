@@ -85,7 +85,8 @@ var CSV_HEADER = ['উপজেলা', 'ক্যাটাগরি', 'না�
 
 // ---------------------------------------------------------------- মেনু
 
-function onOpen() {
+/** মেনু "ভোলা সেবা"। Menu.gs এর onOpen এটি ডাকে (একই প্রজেক্টে সব স্ক্রিপ্ট একসাথে রাখার জন্য)। */
+function infoMenu_() {
   SpreadsheetApp.getUi().createMenu('ভোলা সেবা')
     .addItem('১. ফর্ম তৈরি করো (প্রথমবার)', 'createForm')
     .addItem('২. রিভিউ কলাম ঠিক করো', 'setupReview')

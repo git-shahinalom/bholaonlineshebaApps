@@ -1,0 +1,21 @@
+name: Send test push
+
+# Firebase পুশ ঠিকমতো সাজানো হয়েছে কিনা পরীক্ষা: সবার ফোনে একটি সাধারণ "পরীক্ষামূলক বার্তা" যায়
+# (কোনো ব্যানার বা সাইরেন ছাড়া)। Actions → Send test push → Run workflow
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: পরীক্ষামূলক পুশ
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          pip install --quiet google-auth requests
+          python3 send_fcm.py test

@@ -7,55 +7,73 @@
           "name": "জাতীয় জরুরি সেবা",
           "address": "সারা দেশ",
           "phone": "999",
-          "note": "পুলিশ, ফায়ার সার্ভিস ও অ্যাম্বুলেন্সসহ যেকোনো জরুরি সাহায্যে। যেকোনো ফোন থেকে বিনা মূল্যে।"
+          "note": "পুলিশ, ফায়ার সার্ভিস ও অ্যাম্বুলেন্সসহ যেকোনো জরুরি সাহায্যে। যেকোনো ফোন থেকে বিনা মূল্যে।",
+          "name_en": "National Emergency Service",
+          "address_en": "Nationwide",
+          "note_en": "For any emergency help including police, fire service and ambulance. Free from any phone."
         },
         {
           "name": "ফায়ার সার্ভিস ও সিভিল ডিফেন্স হটলাইন",
           "address": "সারা দেশ",
           "phone": "102",
-          "note": "অগ্নিকাণ্ড ও উদ্ধারের জরুরি হটলাইন।"
+          "note": "অগ্নিকাণ্ড ও উদ্ধারের জরুরি হটলাইন।",
+          "name_en": "Fire Service & Civil Defence Hotline",
+          "address_en": "Nationwide",
+          "note_en": "Emergency hotline for fire and rescue."
         },
         {
           "name": "স্বাস্থ্য বাতায়ন",
           "address": "সারা দেশ",
           "phone": "16263",
-          "note": "স্বাস্থ্য বিষয়ক পরামর্শ ও সেবা, দিনরাত ২৪ ঘণ্টা।"
+          "note": "স্বাস্থ্য বিষয়ক পরামর্শ ও সেবা, দিনরাত ২৪ ঘণ্টা।",
+          "name_en": "Health Window (Shasthyo Batayon)",
+          "address_en": "Nationwide",
+          "note_en": "Health advice and services, 24 hours a day."
         },
         {
           "name": "নারী ও শিশু নির্যাতন প্রতিরোধ",
           "address": "সারা দেশ",
           "phone": "109",
-          "note": "নারী ও শিশু নির্যাতন বা পাচারের ঘটনায় সাহায্যের জন্য।"
+          "note": "নারী ও শিশু নির্যাতন বা পাচারের ঘটনায় সাহায্যের জন্য।",
+          "name_en": "Women & Child Abuse Prevention",
+          "address_en": "Nationwide",
+          "note_en": "Help in cases of violence against women and children, or trafficking."
         },
         {
           "name": "শিশু সহায়তা (চাইল্ড হেল্পলাইন)",
           "address": "সারা দেশ",
           "phone": "1098",
-          "note": "শিশু নির্যাতনসহ শিশুর যেকোনো সমস্যায় সাহায্যের জন্য।"
-        },
-        {
-          "name": "সরকারি আইনি সহায়তা (লিগ্যাল এইড)",
-          "address": "সারা দেশ",
-          "phone": "16699",
-          "note": "বিনা খরচে আইনি পরামর্শ, টোল ফ্রি। আগের নম্বর ১৬৪৩০ বদলে নতুন নম্বর এটি।"
+          "note": "শিশু নির্যাতনসহ শিশুর যেকোনো সমস্যায় সাহায্যের জন্য।",
+          "name_en": "Child Helpline",
+          "address_en": "Nationwide",
+          "note_en": "Help for child abuse and any problem a child faces."
         },
         {
           "name": "দুর্যোগের আগাম বার্তা",
           "address": "সারা দেশ",
           "phone": "1090",
-          "note": "ঘূর্ণিঝড়সহ দুর্যোগের আগাম বার্তা, টোল ফ্রি।"
+          "note": "ঘূর্ণিঝড়সহ দুর্যোগের আগাম বার্তা, টোল ফ্রি।",
+          "name_en": "Disaster Early Warning",
+          "address_en": "Nationwide",
+          "note_en": "Early warnings for cyclones and other disasters, toll-free."
         },
         {
           "name": "সরকারি তথ্য ও সেবা",
           "address": "সারা দেশ",
           "phone": "333",
-          "note": "সরকারি সেবা ও তথ্য এবং দুর্যোগে জরুরি সহায়তা।"
+          "note": "সরকারি সেবা ও তথ্য এবং দুর্যোগে জরুরি সহায়তা।",
+          "name_en": "Government Information & Services",
+          "address_en": "Nationwide",
+          "note_en": "Government services and information, and emergency help during disasters."
         },
         {
           "name": "দুর্নীতি দমন কমিশন (দুদক)",
           "address": "সারা দেশ",
           "phone": "106",
-          "note": "দুর্নীতির অভিযোগ জানানোর হটলাইন।"
+          "note": "দুর্নীতির অভিযোগ জানানোর হটলাইন।",
+          "name_en": "Anti-Corruption Commission (ACC)",
+          "address_en": "Nationwide",
+          "note_en": "Hotline to report corruption."
         }
       ]
     },
@@ -65,13 +83,19 @@
           "name": "ভোলা ফায়ার সার্ভিস ও সিভিল ডিফেন্স স্টেশন",
           "address": "৮নং ওয়ার্ড, পৌরসভা, ভোলা",
           "phone": "01901023975",
-          "note": "ভোলা শহর ও আশপাশের এলাকা।"
+          "note": "ভোলা শহর ও আশপাশের এলাকা।",
+          "name_en": "Bhola Fire Service & Civil Defence Station",
+          "address_en": "Ward 8, Pourashava, Bhola",
+          "note_en": "Bhola town and surrounding areas."
         },
         {
           "name": "বরিশাল বিভাগীয় ফায়ার নিয়ন্ত্রণ কক্ষ",
           "address": "বরিশাল",
           "phone": "01878001111",
-          "note": "বিভাগীয় নিয়ন্ত্রণ কক্ষ।"
+          "note": "বিভাগীয় নিয়ন্ত্রণ কক্ষ।",
+          "name_en": "Barishal Divisional Fire Control Room",
+          "address_en": "Barishal",
+          "note_en": "Divisional control room."
         }
       ],
       "police": [
@@ -79,13 +103,19 @@
           "name": "জেলা পুলিশ সুপারের কার্যালয়, ভোলা",
           "address": "ভোলা",
           "phone": "01794430002",
-          "note": "জেলা পুলিশের প্রধান কার্যালয়। জরুরি অবস্থায় ৯৯৯ এ কল করুন।"
+          "note": "জেলা পুলিশের প্রধান কার্যালয়। জরুরি অবস্থায় ৯৯৯ এ কল করুন।",
+          "name_en": "Superintendent of Police Office, Bhola",
+          "address_en": "Bhola",
+          "note_en": "Main office of the district police. In an emergency, call 999."
         },
         {
           "name": "ভোলা সদর থানা",
           "address": "ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Bhola Sadar Police Station",
+          "address_en": "Bhola Sadar",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "hospital": [
@@ -93,7 +123,10 @@
           "name": "ভোলা ২৫০ শয্যা জেনারেল (সদর) হাসপাতাল",
           "address": "ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Bhola 250-Bed General (Sadar) Hospital",
+          "address_en": "Bhola Sadar",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "tourism": [
@@ -101,19 +134,31 @@
           "name": "তুলাতুলি",
           "address": "ভোলা শহর সংলগ্ন নদীপাড়",
           "phone": "",
-          "note": "ভোলা শহরের কাছের নদীপাড়ের পর্যটন এলাকা।"
+          "note": "ভোলা শহরের কাছের নদীপাড়ের পর্যটন এলাকা।",
+          "type": "waterside",
+          "name_en": "Tulatuli",
+          "address_en": "Riverbank near Bhola town",
+          "note_en": "Riverside tourist area near Bhola town."
         },
         {
           "name": "ইলিশবাড়ি",
           "address": "ভোলা শহর সংলগ্ন নদীপাড়",
           "phone": "",
-          "note": "ভোলা শহরের কাছের নদীপাড়ের পর্যটন এলাকা।"
+          "note": "ভোলা শহরের কাছের নদীপাড়ের পর্যটন এলাকা।",
+          "type": "waterside",
+          "name_en": "Ilishbari",
+          "address_en": "Riverbank near Bhola town",
+          "note_en": "Riverside tourist area near Bhola town."
         },
         {
           "name": "ইলিশা",
           "address": "ভোলা শহর সংলগ্ন নদীপাড়",
           "phone": "",
-          "note": "ভোলা শহরের কাছের নদীপাড়ের পর্যটন এলাকা।"
+          "note": "ভোলা শহরের কাছের নদীপাড়ের পর্যটন এলাকা।",
+          "type": "waterside",
+          "name_en": "Ilisha",
+          "address_en": "Riverbank near Bhola town",
+          "note_en": "Riverside tourist area near Bhola town."
         }
       ],
       "union": [
@@ -121,79 +166,118 @@
           "name": "রাজাপুর ইউনিয়ন পরিষদ",
           "address": "রাজাপুর, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Rajapur Union Parishad",
+          "address_en": "Rajapur, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ইলিশা ইউনিয়ন পরিষদ",
           "address": "ইলিশা, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Ilisha Union Parishad",
+          "address_en": "Ilisha, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "পশ্চিম ইলিশা ইউনিয়ন পরিষদ",
           "address": "পশ্চিম ইলিশা, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "West Ilisha Union Parishad",
+          "address_en": "West Ilisha, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "কাচিয়া ইউনিয়ন পরিষদ",
           "address": "কাচিয়া, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Kachia Union Parishad",
+          "address_en": "Kachia, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "বাপ্তা ইউনিয়ন পরিষদ",
           "address": "বাপ্তা, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Bapta Union Parishad",
+          "address_en": "Bapta, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ধনিয়া ইউনিয়ন পরিষদ",
           "address": "ধনিয়া, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Dhania Union Parishad",
+          "address_en": "Dhania, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "শিবপুর ইউনিয়ন পরিষদ",
           "address": "শিবপুর, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Shibpur Union Parishad",
+          "address_en": "Shibpur, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "আলীনগর ইউনিয়ন পরিষদ",
           "address": "আলীনগর, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Alinagar Union Parishad",
+          "address_en": "Alinagar, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "চর সামাইয়া ইউনিয়ন পরিষদ",
           "address": "চর সামাইয়া, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Char Samaiya Union Parishad",
+          "address_en": "Char Samaiya, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ভেলুমিয়া ইউনিয়ন পরিষদ",
           "address": "ভেলুমিয়া, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Velumia Union Parishad",
+          "address_en": "Velumia, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ভেদুরিয়া ইউনিয়ন পরিষদ",
           "address": "ভেদুরিয়া, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Veduria Union Parishad",
+          "address_en": "Veduria, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "উত্তর দিঘলদী ইউনিয়ন পরিষদ",
           "address": "উত্তর দিঘলদী, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "North Dighaldi Union Parishad",
+          "address_en": "North Dighaldi, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "দক্ষিণ দিঘলদী ইউনিয়ন পরিষদ",
           "address": "দক্ষিণ দিঘলদী, ভোলা সদর",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "South Dighaldi Union Parishad",
+          "address_en": "South Dighaldi, Bhola Sadar",
+          "note_en": "Phone number will be added soon."
         }
       ],
       "ambulance": [
@@ -202,6 +286,9 @@
           "address": "ভোলা সদর",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Bhola Sadar",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -209,6 +296,9 @@
           "address": "ভোলা সদর",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Bhola Sadar",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -218,6 +308,9 @@
           "address": "ভোলা সদর",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Bhola Sadar",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -227,6 +320,9 @@
           "address": "ভোলা সদর",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Bhola Sadar",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -234,21 +330,10 @@
           "address": "ভোলা সদর",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Bhola Sadar",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
-        }
-      ],
-      "lawyer": [
-        {
-          "name": "জেলা লিগ্যাল এইড অফিস, ভোলা",
-          "address": "জেলা জজ আদালত চত্বর, ভোলা সদর",
-          "phone": "",
-          "note": "সরকারি, বিনা খরচে আইনি সহায়তা। জাতীয় হটলাইন: ১৬৬৯৯। ফোন নম্বর যাচাই করে যোগ হবে।"
-        },
-        {
-          "name": "ভোলা জেলা আইনজীবী সমিতি",
-          "address": "ভোলা সদর",
-          "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ হবে।"
         }
       ],
       "govoffice": [
@@ -256,19 +341,28 @@
           "name": "জেলা প্রশাসকের কার্যালয়, ভোলা",
           "address": "ভোলা সদর",
           "phone": "",
-          "note": "জেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "জেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Deputy Commissioner's Office, Bhola",
+          "address_en": "Bhola Sadar",
+          "note_en": "The main administrative office of the district. Phone number will be added after verification."
         },
         {
           "name": "সিভিল সার্জনের কার্যালয়, ভোলা",
           "address": "ভোলা সদর",
           "phone": "",
-          "note": "জেলার স্বাস্থ্য প্রশাসন কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "জেলার স্বাস্থ্য প্রশাসন কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Civil Surgeon's Office, Bhola",
+          "address_en": "Bhola Sadar",
+          "note_en": "District health administration office. Phone number will be added after verification."
         },
         {
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, ভোলা সদর",
           "address": "ভোলা সদর উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Bhola Sadar",
+          "address_en": "Bhola Sadar Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ],
       "waterway": [
@@ -276,7 +370,10 @@
           "name": "ভোলা নদীবন্দর (বিআইডব্লিউটিএ)",
           "address": "ভোলা সদর",
           "phone": "",
-          "note": "লঞ্চ চলাচল ও নৌপথের তথ্য। খারাপ আবহাওয়ায় লঞ্চ চলাচল বন্ধ থাকতে পারে, যাত্রার আগে নিশ্চিত হয়ে নিন। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "লঞ্চ চলাচল ও নৌপথের তথ্য। খারাপ আবহাওয়ায় লঞ্চ চলাচল বন্ধ থাকতে পারে, যাত্রার আগে নিশ্চিত হয়ে নিন। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Bhola River Port (BIWTA)",
+          "address_en": "Bhola Sadar",
+          "note_en": "Launch and waterway information. Launch services may be suspended in bad weather, so confirm before you travel. Phone number will be added after verification."
         }
       ]
     },
@@ -286,13 +383,17 @@
           "name": "দৌলতখান ফায়ার স্টেশন",
           "address": "দৌলতখান",
           "phone": "01901023983",
-          "note": ""
+          "note": "",
+          "name_en": "Daulatkhan Fire Station",
+          "address_en": "Daulatkhan"
         },
         {
           "name": "দৌলতখান ফায়ার স্টেশন (বিকল্প নম্বর)",
           "address": "দৌলতখান",
           "phone": "01797005480",
-          "note": ""
+          "note": "",
+          "name_en": "Daulatkhan Fire Station (alternate number)",
+          "address_en": "Daulatkhan"
         }
       ],
       "hospital": [
@@ -300,7 +401,10 @@
           "name": "দৌলতখান উপজেলা স্বাস্থ্য কমপ্লেক্স",
           "address": "দৌলতখান",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Daulatkhan Upazila Health Complex",
+          "address_en": "Daulatkhan",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "police": [
@@ -308,7 +412,10 @@
           "name": "দৌলতখান থানা",
           "address": "দৌলতখান",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Daulatkhan Police Station",
+          "address_en": "Daulatkhan",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "ambulance": [
@@ -317,6 +424,9 @@
           "address": "দৌলতখান",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Daulatkhan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -324,6 +434,9 @@
           "address": "দৌলতখান",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Daulatkhan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -333,6 +446,9 @@
           "address": "দৌলতখান",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Daulatkhan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -342,6 +458,9 @@
           "address": "দৌলতখান",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Daulatkhan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -349,6 +468,9 @@
           "address": "দৌলতখান",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Daulatkhan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -358,6 +480,9 @@
           "address": "দৌলতখান",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Sights of Daulatkhan",
+          "address_en": "Daulatkhan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -366,7 +491,10 @@
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, দৌলতখান",
           "address": "দৌলতখান উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Daulatkhan",
+          "address_en": "Daulatkhan Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ]
     },
@@ -376,7 +504,9 @@
           "name": "বোরহানউদ্দিন ফায়ার স্টেশন",
           "address": "বোরহানউদ্দিন",
           "phone": "01901023979",
-          "note": ""
+          "note": "",
+          "name_en": "Borhanuddin Fire Station",
+          "address_en": "Borhanuddin"
         }
       ],
       "hospital": [
@@ -384,7 +514,10 @@
           "name": "বোরহানউদ্দিন উপজেলা স্বাস্থ্য কমপ্লেক্স",
           "address": "বোরহানউদ্দিন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Borhanuddin Upazila Health Complex",
+          "address_en": "Borhanuddin",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "tourism": [
@@ -392,7 +525,11 @@
           "name": "বোরহানউদ্দিন ইকোপার্ক",
           "address": "বোরহানউদ্দিন",
           "phone": "",
-          "note": "তেঁতুলিয়া নদী ও সবুজ প্রকৃতিঘেরা পার্ক।"
+          "note": "তেঁতুলিয়া নদী ও সবুজ প্রকৃতিঘেরা পার্ক।",
+          "type": "park",
+          "name_en": "Borhanuddin Eco Park",
+          "address_en": "Borhanuddin",
+          "note_en": "A park surrounded by the Tetulia river and greenery."
         }
       ],
       "police": [
@@ -400,7 +537,10 @@
           "name": "বোরহানউদ্দিন থানা",
           "address": "বোরহানউদ্দিন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Borhanuddin Police Station",
+          "address_en": "Borhanuddin",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "ambulance": [
@@ -409,6 +549,9 @@
           "address": "বোরহানউদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Borhanuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -416,6 +559,9 @@
           "address": "বোরহানউদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Borhanuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -425,6 +571,9 @@
           "address": "বোরহানউদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Borhanuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -434,6 +583,9 @@
           "address": "বোরহানউদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Borhanuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -441,6 +593,9 @@
           "address": "বোরহানউদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Borhanuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -449,7 +604,10 @@
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, বোরহানউদ্দিন",
           "address": "বোরহানউদ্দিন উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Borhanuddin",
+          "address_en": "Borhanuddin Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ]
     },
@@ -459,7 +617,9 @@
           "name": "লালমোহন ফায়ার স্টেশন",
           "address": "লালমোহন",
           "phone": "01901023985",
-          "note": ""
+          "note": "",
+          "name_en": "Lalmohan Fire Station",
+          "address_en": "Lalmohan"
         }
       ],
       "hospital": [
@@ -467,7 +627,10 @@
           "name": "লালমোহন উপজেলা স্বাস্থ্য কমপ্লেক্স",
           "address": "লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Lalmohan Upazila Health Complex",
+          "address_en": "Lalmohan",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "police": [
@@ -475,7 +638,10 @@
           "name": "লালমোহন থানা",
           "address": "লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Lalmohan Police Station",
+          "address_en": "Lalmohan",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "union": [
@@ -483,55 +649,82 @@
           "name": "বদরপুর ইউনিয়ন পরিষদ",
           "address": "বদরপুর, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Badarpur Union Parishad",
+          "address_en": "Badarpur, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "কালমা ইউনিয়ন পরিষদ",
           "address": "কালমা, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Kalma Union Parishad",
+          "address_en": "Kalma, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ধলী গৌরনগর ইউনিয়ন পরিষদ",
           "address": "ধলী গৌরনগর, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Dhali Gournagar Union Parishad",
+          "address_en": "Dhali Gournagar, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "চর ভূতা ইউনিয়ন পরিষদ",
           "address": "চর ভূতা, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Char Bhuta Union Parishad",
+          "address_en": "Char Bhuta, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "লালমোহন ইউনিয়ন পরিষদ",
           "address": "লালমোহন, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Lalmohan Union Parishad",
+          "address_en": "Lalmohan, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ফরাজগঞ্জ ইউনিয়ন পরিষদ",
           "address": "ফরাজগঞ্জ, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Farajganj Union Parishad",
+          "address_en": "Farajganj, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "পশ্চিম চর উমেদ ইউনিয়ন পরিষদ",
           "address": "পশ্চিম চর উমেদ, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "West Char Umed Union Parishad",
+          "address_en": "West Char Umed, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "রমাগঞ্জ ইউনিয়ন পরিষদ",
           "address": "রমাগঞ্জ, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Ramaganj Union Parishad",
+          "address_en": "Ramaganj, Lalmohan",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "লর্ড হার্ডিঞ্জ ইউনিয়ন পরিষদ",
           "address": "লর্ড হার্ডিঞ্জ, লালমোহন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Lord Hardinge Union Parishad",
+          "address_en": "Lord Hardinge, Lalmohan",
+          "note_en": "Phone number will be added soon."
         }
       ],
       "ambulance": [
@@ -540,6 +733,9 @@
           "address": "লালমোহন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Lalmohan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -547,6 +743,9 @@
           "address": "লালমোহন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Lalmohan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -556,6 +755,9 @@
           "address": "লালমোহন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Lalmohan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -565,6 +767,9 @@
           "address": "লালমোহন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Lalmohan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -572,6 +777,9 @@
           "address": "লালমোহন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Lalmohan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -581,6 +789,9 @@
           "address": "লালমোহন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Sights of Lalmohan",
+          "address_en": "Lalmohan",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -589,7 +800,10 @@
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, লালমোহন",
           "address": "লালমোহন উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Lalmohan",
+          "address_en": "Lalmohan Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ]
     },
@@ -599,7 +813,9 @@
           "name": "তজুমদ্দিন ফায়ার স্টেশন",
           "address": "তজুমদ্দিন",
           "phone": "01901023989",
-          "note": ""
+          "note": "",
+          "name_en": "Tazumuddin Fire Station",
+          "address_en": "Tazumuddin"
         }
       ],
       "hospital": [
@@ -607,7 +823,10 @@
           "name": "তজুমদ্দিন উপজেলা স্বাস্থ্য কমপ্লেক্স",
           "address": "তজুমদ্দিন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Tazumuddin Upazila Health Complex",
+          "address_en": "Tazumuddin",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "police": [
@@ -615,7 +834,10 @@
           "name": "তজুমদ্দিন থানা",
           "address": "তজুমদ্দিন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Tazumuddin Police Station",
+          "address_en": "Tazumuddin",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "ambulance": [
@@ -624,6 +846,9 @@
           "address": "তজুমদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Tazumuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -631,6 +856,9 @@
           "address": "তজুমদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Tazumuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -640,6 +868,9 @@
           "address": "তজুমদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Tazumuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -649,6 +880,9 @@
           "address": "তজুমদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Tazumuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -656,6 +890,9 @@
           "address": "তজুমদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Tazumuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -665,6 +902,9 @@
           "address": "তজুমদ্দিন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Sights of Tazumuddin",
+          "address_en": "Tazumuddin",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -673,7 +913,10 @@
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, তজুমদ্দিন",
           "address": "তজুমদ্দিন উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Tazumuddin",
+          "address_en": "Tazumuddin Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ]
     },
@@ -683,7 +926,9 @@
           "name": "চরফ্যাশন ফায়ার স্টেশন",
           "address": "চরফ্যাশন",
           "phone": "01901023981",
-          "note": ""
+          "note": "",
+          "name_en": "Char Fasson Fire Station",
+          "address_en": "Char Fasson"
         }
       ],
       "hospital": [
@@ -691,7 +936,10 @@
           "name": "চরফ্যাশন উপজেলা স্বাস্থ্য কমপ্লেক্স",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Char Fasson Upazila Health Complex",
+          "address_en": "Char Fasson",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "tourism": [
@@ -700,6 +948,10 @@
           "address": "চরফ্যাশন",
           "phone": "",
           "note": "বঙ্গোপসাগরের কোলের চর, ভোলার মিনি সুন্দরবন নামে পরিচিত। সবুজ বন, হরিণ, বানর, শীতে অতিথি পাখি, সূর্যোদয়-সূর্যাস্ত ও ক্যাম্পিংয়ের সুযোগ। (অবস্থান: চর কুকরি-মুকরি অভয়ারণ্য)",
+          "type": "nature",
+          "name_en": "Char Kukri-Mukri",
+          "address_en": "Char Fasson",
+          "note_en": "A char (river island) on the edge of the Bay of Bengal, known as the \"Mini Sundarbans\" of Bhola. Green forest, deer, monkeys, winter migratory birds, sunrise and sunset views and camping. (Location: Char Kukri-Mukri wildlife sanctuary)",
           "lat": 21.925583,
           "lng": 90.647056
         },
@@ -707,37 +959,59 @@
           "name": "জ্যাকব টাওয়ার",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "চরফ্যাশনের জনপ্রিয় পর্যটন আকর্ষণ।"
+          "note": "চরফ্যাশনের জনপ্রিয় পর্যটন আকর্ষণ।",
+          "type": "landmark",
+          "name_en": "Jacob Tower",
+          "address_en": "Char Fasson",
+          "note_en": "A popular tourist attraction in Char Fasson."
         },
         {
           "name": "তারুয়া সৈকত",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "চরফ্যাশনের সমুদ্রসৈকত।"
+          "note": "চরফ্যাশনের সমুদ্রসৈকত।",
+          "type": "beach",
+          "name_en": "Tarua Beach",
+          "address_en": "Char Fasson",
+          "note_en": "The sea beach of Char Fasson."
         },
         {
           "name": "ঢালচর",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "চরফ্যাশনের পর্যটন স্পট।"
+          "note": "চরফ্যাশনের পর্যটন স্পট।",
+          "type": "nature",
+          "name_en": "Dhalchar",
+          "address_en": "Char Fasson",
+          "note_en": "A tourist spot in Char Fasson."
         },
         {
           "name": "খেজুরগাছিয়া",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "চরফ্যাশনের পর্যটন স্পট।"
+          "note": "চরফ্যাশনের পর্যটন স্পট।",
+          "name_en": "Khejurgachia",
+          "address_en": "Char Fasson",
+          "note_en": "A tourist spot in Char Fasson."
         },
         {
           "name": "বেতুয়া",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "চরফ্যাশনের পর্যটন স্পট।"
+          "note": "চরফ্যাশনের পর্যটন স্পট।",
+          "name_en": "Betua",
+          "address_en": "Char Fasson",
+          "note_en": "A tourist spot in Char Fasson."
         },
         {
           "name": "শেখ রাসেল শিশু পার্ক",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "শিশুদের পার্ক।"
+          "note": "শিশুদের পার্ক।",
+          "type": "park",
+          "name_en": "Sheikh Russel Children's Park",
+          "address_en": "Char Fasson",
+          "note_en": "A children's park."
         }
       ],
       "police": [
@@ -745,7 +1019,10 @@
           "name": "চরফ্যাশন থানা",
           "address": "চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Char Fasson Police Station",
+          "address_en": "Char Fasson",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "union": [
@@ -753,115 +1030,172 @@
           "name": "ওসমানগঞ্জ ইউনিয়ন পরিষদ",
           "address": "ওসমানগঞ্জ, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Osmanganj Union Parishad",
+          "address_en": "Osmanganj, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "আসলামপুর ইউনিয়ন পরিষদ",
           "address": "আসলামপুর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Aslampur Union Parishad",
+          "address_en": "Aslampur, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "চরমাদ্রাজ ইউনিয়ন পরিষদ",
           "address": "চরমাদ্রাজ, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Char Madraj Union Parishad",
+          "address_en": "Char Madraj, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "জিন্নাগড় ইউনিয়ন পরিষদ",
           "address": "জিন্নাগড়, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Jinnagar Union Parishad",
+          "address_en": "Jinnagar, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "আমিনাবাদ ইউনিয়ন পরিষদ",
           "address": "আমিনাবাদ, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Aminabad Union Parishad",
+          "address_en": "Aminabad, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "নূরাবাদ ইউনিয়ন পরিষদ",
           "address": "নূরাবাদ, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Nurabad Union Parishad",
+          "address_en": "Nurabad, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "নীলকমল ইউনিয়ন পরিষদ",
           "address": "নীলকমল, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Nilkamal Union Parishad",
+          "address_en": "Nilkamal, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "চরকলমি ইউনিয়ন পরিষদ",
           "address": "চরকলমি, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Char Kalmi Union Parishad",
+          "address_en": "Char Kalmi, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "চরমানিকা ইউনিয়ন পরিষদ",
           "address": "চরমানিকা, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Char Manika Union Parishad",
+          "address_en": "Char Manika, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "হাজারীগঞ্জ ইউনিয়ন পরিষদ",
           "address": "হাজারীগঞ্জ, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Hajariganj Union Parishad",
+          "address_en": "Hajariganj, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "রসুলপুর ইউনিয়ন পরিষদ",
           "address": "রসুলপুর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Rasulpur Union Parishad",
+          "address_en": "Rasulpur, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "চর কুকরীমুকরি ইউনিয়ন পরিষদ",
           "address": "চর কুকরীমুকরি, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Char Kukri Mukri Union Parishad",
+          "address_en": "Char Kukri Mukri, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "এওয়াজপুর ইউনিয়ন পরিষদ",
           "address": "এওয়াজপুর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Ewajpur Union Parishad",
+          "address_en": "Ewajpur, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "জাহানপুর ইউনিয়ন পরিষদ",
           "address": "জাহানপুর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Jahanpur Union Parishad",
+          "address_en": "Jahanpur, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "অধ্যক্ষ নজরুল নগর ইউনিয়ন পরিষদ",
           "address": "অধ্যক্ষ নজরুল নগর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Adhyaksha Nazrul Nagar Union Parishad",
+          "address_en": "Adhyaksha Nazrul Nagar, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "মুজিব নগর ইউনিয়ন পরিষদ",
           "address": "মুজিব নগর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Mujib Nagar Union Parishad",
+          "address_en": "Mujib Nagar, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "আবু বকরপুর ইউনিয়ন পরিষদ",
           "address": "আবু বকরপুর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Abu Bakarpur Union Parishad",
+          "address_en": "Abu Bakarpur, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "আবদুল্লাপুর ইউনিয়ন পরিষদ",
           "address": "আবদুল্লাপুর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Abdullahpur Union Parishad",
+          "address_en": "Abdullahpur, Char Fasson",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "ঢালচর ইউনিয়ন পরিষদ",
           "address": "ঢালচর, চরফ্যাশন",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Dhalchar Union Parishad",
+          "address_en": "Dhalchar, Char Fasson",
+          "note_en": "Phone number will be added soon."
         }
       ],
       "ambulance": [
@@ -870,6 +1204,9 @@
           "address": "চরফ্যাশন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Char Fasson",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -877,6 +1214,9 @@
           "address": "চরফ্যাশন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Char Fasson",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -886,6 +1226,9 @@
           "address": "চরফ্যাশন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Char Fasson",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -895,6 +1238,9 @@
           "address": "চরফ্যাশন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Char Fasson",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -902,6 +1248,9 @@
           "address": "চরফ্যাশন",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Char Fasson",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -910,7 +1259,10 @@
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, চরফ্যাশন",
           "address": "চরফ্যাশন উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Char Fasson",
+          "address_en": "Char Fasson Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ]
     },
@@ -920,7 +1272,9 @@
           "name": "মনপুরা ফায়ার স্টেশন",
           "address": "মনপুরা",
           "phone": "01901023987",
-          "note": ""
+          "note": "",
+          "name_en": "Monpura Fire Station",
+          "address_en": "Monpura"
         }
       ],
       "hospital": [
@@ -928,7 +1282,10 @@
           "name": "মনপুরা উপজেলা স্বাস্থ্য কমপ্লেক্স",
           "address": "মনপুরা",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Monpura Upazila Health Complex",
+          "address_en": "Monpura",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "tourism": [
@@ -937,6 +1294,10 @@
           "address": "মনপুরা",
           "phone": "",
           "note": "এক দিকে বঙ্গোপসাগর, তিন দিকে মেঘনা নদীঘেরা দ্বীপ। হরিণের অভয়ারণ্য, ম্যানগ্রোভ বন ও সমুদ্রসৈকত। (অবস্থান: মনপুরা উপজেলার কেন্দ্র, আনুমানিক)",
+          "type": "nature",
+          "name_en": "Monpura Island",
+          "address_en": "Monpura",
+          "note_en": "An island with the Bay of Bengal on one side and the Meghna river on three sides. Deer sanctuary, mangrove forest and sea beach. (Location: approximate centre of Monpura upazila)",
           "lat": 22.2983,
           "lng": 90.98
         }
@@ -946,7 +1307,10 @@
           "name": "মনপুরা থানা",
           "address": "মনপুরা",
           "phone": "",
-          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।"
+          "note": "ফোন নম্বর যাচাই করে যোগ করা হবে। জরুরি প্রয়োজনে ৯৯৯ এ কল করুন।",
+          "name_en": "Monpura Police Station",
+          "address_en": "Monpura",
+          "note_en": "Phone number will be added after verification. In an emergency, call 999."
         }
       ],
       "union": [
@@ -954,25 +1318,37 @@
           "name": "হাজীরহাট ইউনিয়ন পরিষদ",
           "address": "হাজীরহাট, মনপুরা",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Hajirhat Union Parishad",
+          "address_en": "Hajirhat, Monpura",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "মনপুরা ইউনিয়ন পরিষদ",
           "address": "মনপুরা, মনপুরা",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "Monpura Union Parishad",
+          "address_en": "Monpura, Monpura",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "উত্তর সাকুচিয়া ইউনিয়ন পরিষদ",
           "address": "উত্তর সাকুচিয়া, মনপুরা",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "North Sakuchia Union Parishad",
+          "address_en": "North Sakuchia, Monpura",
+          "note_en": "Phone number will be added soon."
         },
         {
           "name": "দক্ষিণ সাকুচিয়া ইউনিয়ন পরিষদ",
           "address": "দক্ষিণ সাকুচিয়া, মনপুরা",
           "phone": "",
-          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।"
+          "note": "ফোন নম্বর শীঘ্রই যোগ হবে।",
+          "name_en": "South Sakuchia Union Parishad",
+          "address_en": "South Sakuchia, Monpura",
+          "note_en": "Phone number will be added soon."
         }
       ],
       "ambulance": [
@@ -981,6 +1357,9 @@
           "address": "মনপুরা",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ১",
+          "address_en": "Monpura",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -988,6 +1367,9 @@
           "address": "মনপুরা",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Ambulance Service ২",
+          "address_en": "Monpura",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -997,6 +1379,9 @@
           "address": "মনপুরা",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Palli Bidyut (Rural Electricity) Complaint Centre",
+          "address_en": "Monpura",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -1006,6 +1391,9 @@
           "address": "মনপুরা",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ১",
+          "address_en": "Monpura",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         },
         {
@@ -1013,6 +1401,9 @@
           "address": "মনপুরা",
           "phone": "",
           "note": "এটি নমুনা তথ্য। আসল তথ্য শীঘ্রই যোগ হবে।",
+          "name_en": "Rent-a-Car Service ২",
+          "address_en": "Monpura",
+          "note_en": "This is sample data. Real information will be added soon.",
           "demo": true
         }
       ],
@@ -1021,7 +1412,10 @@
           "name": "উপজেলা নির্বাহী অফিসারের কার্যালয়, মনপুরা",
           "address": "মনপুরা উপজেলা",
           "phone": "",
-          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।"
+          "note": "উপজেলার প্রধান প্রশাসনিক কার্যালয়। ফোন নম্বর যাচাই করে যোগ হবে।",
+          "name_en": "Upazila Nirbahi Officer's Office, Monpura",
+          "address_en": "Monpura Upazila",
+          "note_en": "The main administrative office of the upazila. Phone number will be added after verification."
         }
       ]
     }
