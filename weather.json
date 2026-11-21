@@ -1,0 +1,362 @@
+{
+  "updated_ms": 1795261208170,
+  "source": "Open-Meteo.com",
+  "location": "ভোলা",
+  "current": {
+    "temp": 23.6,
+    "feels": 28.0,
+    "humidity": 93,
+    "rain": 0.0,
+    "code": 1,
+    "wind": 5,
+    "gust": 13,
+    "dir": 125
+  },
+  "daily": [
+    {
+      "date": "2026-11-21",
+      "code": 81,
+      "max": 25,
+      "min": 23,
+      "rain": 35.0,
+      "rainProb": 100,
+      "gustMax": 27
+    },
+    {
+      "date": "2026-11-22",
+      "code": 55,
+      "max": 28,
+      "min": 22,
+      "rain": 3.5,
+      "rainProb": 59,
+      "gustMax": 19
+    },
+    {
+      "date": "2026-11-23",
+      "code": 51,
+      "max": 28,
+      "min": 23,
+      "rain": 1.5,
+      "rainProb": 20,
+      "gustMax": 18
+    }
+  ],
+  "auto": [],
+  "regions": {
+    "bhola_sadar": {
+      "current": {
+        "temp": 23.6,
+        "feels": 28.0,
+        "humidity": 93,
+        "rain": 0.0,
+        "code": 1,
+        "wind": 5,
+        "gust": 13,
+        "dir": 125
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 81,
+          "max": 25,
+          "min": 23,
+          "rain": 35.0,
+          "rainProb": 100,
+          "gustMax": 27
+        },
+        {
+          "date": "2026-11-22",
+          "code": 55,
+          "max": 28,
+          "min": 22,
+          "rain": 3.5,
+          "rainProb": 59,
+          "gustMax": 19
+        },
+        {
+          "date": "2026-11-23",
+          "code": 51,
+          "max": 28,
+          "min": 23,
+          "rain": 1.5,
+          "rainProb": 20,
+          "gustMax": 18
+        }
+      ],
+      "auto": [],
+      "name": "ভোলা সদর",
+      "lat": 22.685,
+      "lon": 90.648
+    },
+    "borhanuddin": {
+      "current": {
+        "temp": 23.5,
+        "feels": 28.0,
+        "humidity": 95,
+        "rain": 0.0,
+        "code": 1,
+        "wind": 5,
+        "gust": 11,
+        "dir": 121
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 81,
+          "max": 25,
+          "min": 23,
+          "rain": 27.2,
+          "rainProb": 100,
+          "gustMax": 27
+        },
+        {
+          "date": "2026-11-22",
+          "code": 53,
+          "max": 28,
+          "min": 22,
+          "rain": 3.2,
+          "rainProb": 81,
+          "gustMax": 20
+        },
+        {
+          "date": "2026-11-23",
+          "code": 51,
+          "max": 28,
+          "min": 23,
+          "rain": 1.3,
+          "rainProb": 37,
+          "gustMax": 14
+        }
+      ],
+      "auto": [],
+      "name": "বোরহানউদ্দিন",
+      "lat": 22.49,
+      "lon": 90.72
+    },
+    "dowlatkhan": {
+      "current": {
+        "temp": 24.8,
+        "feels": 28.2,
+        "humidity": 84,
+        "rain": 0.0,
+        "code": 1,
+        "wind": 10,
+        "gust": 16,
+        "dir": 120
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 81,
+          "max": 25,
+          "min": 24,
+          "rain": 32.5,
+          "rainProb": 100,
+          "gustMax": 29
+        },
+        {
+          "date": "2026-11-22",
+          "code": 51,
+          "max": 27,
+          "min": 23,
+          "rain": 1.5,
+          "rainProb": 81,
+          "gustMax": 16
+        },
+        {
+          "date": "2026-11-23",
+          "code": 51,
+          "max": 28,
+          "min": 24,
+          "rain": 0.2,
+          "rainProb": 37,
+          "gustMax": 17
+        }
+      ],
+      "auto": [],
+      "name": "দৌলতখান",
+      "lat": 22.57,
+      "lon": 90.73
+    },
+    "lalmohon": {
+      "current": {
+        "temp": 23.2,
+        "feels": 27.7,
+        "humidity": 96,
+        "rain": 0.0,
+        "code": 2,
+        "wind": 4,
+        "gust": 10,
+        "dir": 97
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 81,
+          "max": 25,
+          "min": 22,
+          "rain": 22.7,
+          "rainProb": 100,
+          "gustMax": 23
+        },
+        {
+          "date": "2026-11-22",
+          "code": 80,
+          "max": 28,
+          "min": 22,
+          "rain": 6.3,
+          "rainProb": 84,
+          "gustMax": 21
+        },
+        {
+          "date": "2026-11-23",
+          "code": 51,
+          "max": 29,
+          "min": 22,
+          "rain": 2.0,
+          "rainProb": 62,
+          "gustMax": 13
+        }
+      ],
+      "auto": [],
+      "name": "লালমোহন",
+      "lat": 22.33,
+      "lon": 90.74
+    },
+    "charfasson": {
+      "current": {
+        "temp": 23.4,
+        "feels": 27.6,
+        "humidity": 94,
+        "rain": 0.1,
+        "code": 51,
+        "wind": 6,
+        "gust": 17,
+        "dir": 106
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 81,
+          "max": 24,
+          "min": 23,
+          "rain": 41.3,
+          "rainProb": 100,
+          "gustMax": 25
+        },
+        {
+          "date": "2026-11-22",
+          "code": 80,
+          "max": 28,
+          "min": 22,
+          "rain": 5.0,
+          "rainProb": 84,
+          "gustMax": 23
+        },
+        {
+          "date": "2026-11-23",
+          "code": 53,
+          "max": 28,
+          "min": 23,
+          "rain": 2.4,
+          "rainProb": 62,
+          "gustMax": 18
+        }
+      ],
+      "auto": [],
+      "name": "চরফ্যাশন",
+      "lat": 22.18,
+      "lon": 90.75
+    },
+    "tazumuddin": {
+      "current": {
+        "temp": 23.4,
+        "feels": 27.5,
+        "humidity": 94,
+        "rain": 0.1,
+        "code": 51,
+        "wind": 7,
+        "gust": 16,
+        "dir": 106
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 81,
+          "max": 24,
+          "min": 23,
+          "rain": 31.1,
+          "rainProb": 100,
+          "gustMax": 28
+        },
+        {
+          "date": "2026-11-22",
+          "code": 80,
+          "max": 28,
+          "min": 22,
+          "rain": 7.3,
+          "rainProb": 84,
+          "gustMax": 22
+        },
+        {
+          "date": "2026-11-23",
+          "code": 53,
+          "max": 28,
+          "min": 22,
+          "rain": 1.6,
+          "rainProb": 62,
+          "gustMax": 16
+        }
+      ],
+      "auto": [],
+      "name": "তজুমদ্দিন",
+      "lat": 22.3,
+      "lon": 90.87
+    },
+    "monpura": {
+      "current": {
+        "temp": 23.4,
+        "feels": 27.1,
+        "humidity": 94,
+        "rain": 0.1,
+        "code": 51,
+        "wind": 10,
+        "gust": 19,
+        "dir": 104
+      },
+      "daily": [
+        {
+          "date": "2026-11-21",
+          "code": 82,
+          "max": 25,
+          "min": 23,
+          "rain": 31.1,
+          "rainProb": 100,
+          "gustMax": 32
+        },
+        {
+          "date": "2026-11-22",
+          "code": 80,
+          "max": 28,
+          "min": 23,
+          "rain": 3.8,
+          "rainProb": 84,
+          "gustMax": 24
+        },
+        {
+          "date": "2026-11-23",
+          "code": 51,
+          "max": 28,
+          "min": 24,
+          "rain": 1.1,
+          "rainProb": 62,
+          "gustMax": 22
+        }
+      ],
+      "auto": [],
+      "name": "মনপুরা",
+      "lat": 22.2983,
+      "lon": 90.98
+    }
+  }
+}
